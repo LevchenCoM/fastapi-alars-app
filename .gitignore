@@ -1,0 +1,15 @@
+venv/
+
+.DS_Store
+.DS_Store?
+
+# Python compiled files
+*pyc
+/.idea/
+
+.env
+
+nginx.config
+
+# Personal settings
+personal.py
