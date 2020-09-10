@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<p id="user_info">Hello </p>
+<a id="create_user_action" href="/users/create"><button id="add_user">Add new user</button></a>
+
+<button id="logout">Logout</button>
+<p></p>
+<table id="users_table">
+    <tr>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Actions</th>
+    </tr>
+</table>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', path='/js/common.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/users_list_page.js') }}"></script>
+{% endblock %}

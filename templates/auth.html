@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <form id="auth-form">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username">
+        <label for="username">Password</label>
+        <input id="password" type="password" name="password">
+        <button id="submit-btn" type="submit">Login</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', path='/js/auth_page.js') }}"></script>
+{% endblock %}

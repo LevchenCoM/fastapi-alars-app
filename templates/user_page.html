@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<a href="/"><button>Back to list</button></a>
+<button id="delete_user">Delete</button>
+<p></p>
+<form id="user_form">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username">
+    <label for="first_name">First name</label>
+    <input id="first_name" type="text" name="first_name">
+    <label for="last_name">Last name</label>
+    <input id="last_name" type="text" name="last_name">
+
+    <button id="sumbit" type="submit">Save</button>
+</form>
+
+<p id="errors" style="color: red"></p>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ url_for('static', path='/js/common.js') }}"></script>
+    <script src="{{ url_for('static', path='/js/user_page.js') }}"></script>
+{% endblock %}

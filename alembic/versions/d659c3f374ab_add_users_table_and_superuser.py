@@ -1,8 +1,8 @@
-"""Added users table
+"""Add users table and superuser
 
-Revision ID: 073c61c887aa
+Revision ID: d659c3f374ab
 Revises: 
-Create Date: 2020-09-09 17:07:05.500313
+Create Date: 2020-09-10 22:10:10.138589
 
 """
 from alembic import op
@@ -10,7 +10,9 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '073c61c887aa'
+from core.users.auth import get_password_hash
+
+revision = 'd659c3f374ab'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,9 +26,21 @@ def upgrade():
     sa.Column('password', sa.String(), nullable=True),
     sa.Column('first_name', sa.String(), nullable=True),
     sa.Column('last_name', sa.String(), nullable=True),
+    sa.Column('is_admin', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
+    admin_info = {
+        'username': 'admin',
+        'password': get_password_hash('admin'),
+        'first_name': 'John',
+        'last_name': 'Levis',
+        'is_admin': 1
+    }
+
+    op.execute("INSERT INTO users (username, password, first_name, last_name, is_admin) "
+               "values ('{username}','{password}','{first_name}','{last_name}','{is_admin}')"
+               .format(**admin_info))
 
 
 def downgrade():
