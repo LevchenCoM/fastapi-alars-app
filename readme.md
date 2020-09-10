@@ -1,6 +1,10 @@
-# Installation guide
+## Description
 
-### Requirenments:
+A simple app with users CRUD features.
+
+## Installation guide
+
+#### Requirenments:
 
 * python3.7+
 * virtualenv
@@ -16,7 +20,7 @@ Then create virtualenv
 ```
 python3 -m venv venv
 ```
-Note - you can use any suitable for you method to create virtualenv.
+**Note: You can use any suitable for you method to create virtualenv.**
 
 Then install requirenments.
 Activate your virtualenv and do next steps:
@@ -50,4 +54,4 @@ uvicorn main:app --reload
 
 Go to http://localhost:8000 and enjoy!
 
-Note: Username and password for super-user - "admin"
+**Note: Username and password for super-user - "admin"**
