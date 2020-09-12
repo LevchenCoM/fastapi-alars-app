@@ -9,7 +9,7 @@ users = sqlalchemy.Table(
     sqlalchemy.Column("password", sqlalchemy.String),
     sqlalchemy.Column("first_name", sqlalchemy.String),
     sqlalchemy.Column("last_name", sqlalchemy.String),
-    sqlalchemy.Column("is_admin", sqlalchemy.Boolean),
+    sqlalchemy.Column("is_admin", sqlalchemy.Boolean, default=False),
 )
 
 

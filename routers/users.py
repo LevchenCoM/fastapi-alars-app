@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Response, status
 
 from core.users.auth import get_current_user_or_401, get_password_hash
 from models import UserService
-from schemas import User, UserCreate, User
+from schemas import User, UserCreate, User, UserBase
 
 router = APIRouter()
 
@@ -36,13 +36,13 @@ async def get_user(user_id: int, user: User = Depends(get_current_user_or_401)):
 
 
 @router.put('/api/users/{user_id}', response_model=User)
-async def update_user(user_id: int, user: User, current_user: User = Depends(get_current_user_or_401)):
+async def update_user(user_id: int, user: UserBase, current_user: User = Depends(get_current_user_or_401)):
     user_exist = await UserService.get_by_id(current_user, user_id)
     if user_exist:
         if await UserService.has_duplicates_by_username(user_id, user.username):
             raise HTTPException(status_code=422, detail="User with this username already exist.")
         else:
-            await UserService.update(current_user, user_id, user.dict())
+            await UserService.update(user_id, user.dict())
     else:
         raise HTTPException(status_code=404, detail="Item not found")
 
