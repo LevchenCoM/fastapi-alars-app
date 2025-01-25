@@ -12,7 +12,7 @@ A simple app with users CRUD features.
 First of all - download the project:
 
 ```
-git clone https://github.com/LevchenCoM/fastapi-alarstudio-app.git
+git clone https://github.com/LevchenCoM/fastapi-alars-app.git
 ```
 
 Then create virtualenv
